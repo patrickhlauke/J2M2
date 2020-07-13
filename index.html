@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>J2M2 - Convert from Jira text formatting tp GitHub-flavored Markdown and back again</title>
+<link href="css/styles.css" rel="stylesheet">
+</head>
+
+<body>
+
+<div class="container">
+
+<header>
+<h1><abbr title="Jira to Markdown">J2M</abbr>2</h1>
+</header>
+
+<main>
+
+<h2>Convert from Jira text formatting to GitHub-flavored Markdown and back again</h2>
+<p>Expanded to support alternative text for images</p>
+
+<h3>JIRA</h3>
+<textarea class="editor" id="j">h1. Biggest heading
+
+h2. Bigger heading
+
+h1. Biggest heading
+h2. Bigger heading
+h3. Big heading
+h4. Normal heading
+h5. Small heading
+h6. Smallest heading
+
+*strong*
+_emphasis_
+{{monospaced}}
+??citation??
+-deleted-
++inserted+
+^superscript^
+~subscript~
+
+{code:javascript}
+var hello = 'world';
+{code}
+
+!foo.jpg!
+!foo.jpg|alt=Alternative text!
+
+[http://google.com]
+[Google|http://google.com]
+
+GitHub Flavor
+-deleted-
+
+{noformat}
+preformatted piece of text
+so *no* further _formatting_ is done here
+{noformat}
+</textarea>
+
+<h3>MarkDown</h3>
+<textarea class="editor" id="m"># Biggest heading
+
+## Bigger heading
+
+# Biggest heading
+## Bigger heading
+### Big heading
+#### Normal heading
+##### Small heading
+###### Smallest heading
+
+**strong**
+*emphasis*
+`monospaced`
+&lt;cite&gt;citation&lt;/cite&gt;
+~~deleted~~
+&lt;ins&gt;inserted&lt;/ins&gt;
+&lt;sup&gt;superscript&lt;/sup&gt;
+&lt;sub&gt;subscript&lt;/sub&gt;
+
+```javascript
+var hello = 'world';
+```
+
+![](foo.jpg)
+![Alternative text](foo.jpg)
+
+&lt;http://google.com&gt;
+[Google](http://google.com)
+
+GitHub Flavor
+~~deleted~~
+
+```
+preformatted piece of text
+so *no* further _formatting_ is done here
+```
+</textarea>
+
+</main>
+
+<footer>
+<p>Based on <a href="http://www.fokkezb.nl" target="_blank">Fokke Zandbergen</a>'s <a href="https://github.com/FokkeZB/J2M" target="_blank">J2M</a></p>
+</footer>
+
+<script src="js/J2M2.js"></script>
+<script src="js/script.js"></script>
+
+</body>
+</html>
