@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-<title>J2M2 - Convert from Jira text formatting tp GitHub-flavored Markdown and back again</title>
+<title>J2M2 - Convert between GitHub-flavored Markdown and Jira text</title>
 <link href="css/styles.css" rel="stylesheet">
 </head>
 
@@ -17,48 +17,8 @@
 
 <main>
 
-<h2>Convert from Jira text formatting to GitHub-flavored Markdown and back again</h2>
-<p>Expanded to support alternative text for images</p>
-
-<h3>JIRA</h3>
-<textarea class="editor" id="j">h1. Biggest heading
-
-h2. Bigger heading
-
-h1. Biggest heading
-h2. Bigger heading
-h3. Big heading
-h4. Normal heading
-h5. Small heading
-h6. Smallest heading
-
-*strong*
-_emphasis_
-{{monospaced}}
-??citation??
--deleted-
-+inserted+
-^superscript^
-~subscript~
-
-{code:javascript}
-var hello = 'world';
-{code}
-
-!foo.jpg!
-!foo.jpg|alt=Alternative text!
-
-[http://google.com]
-[Google|http://google.com]
-
-GitHub Flavor
--deleted-
-
-{noformat}
-preformatted piece of text
-so *no* further _formatting_ is done here
-{noformat}
-</textarea>
+<h2>Convert between GitHub-flavored Markdown and Jira text.</h2>
+<p>Expanded to support alternative text for images (since the original project seems to be unmaintained)</p>
 
 <h3>MarkDown</h3>
 <textarea class="editor" id="m"># Biggest heading
@@ -98,6 +58,46 @@ GitHub Flavor
 preformatted piece of text
 so *no* further _formatting_ is done here
 ```
+</textarea>
+
+<h3>JIRA</h3>
+<textarea class="editor" id="j">h1. Biggest heading
+
+h2. Bigger heading
+
+h1. Biggest heading
+h2. Bigger heading
+h3. Big heading
+h4. Normal heading
+h5. Small heading
+h6. Smallest heading
+
+*strong*
+_emphasis_
+{{monospaced}}
+??citation??
+-deleted-
++inserted+
+^superscript^
+~subscript~
+
+{code:javascript}
+var hello = 'world';
+{code}
+
+!foo.jpg!
+!foo.jpg|alt=Alternative text!
+
+[http://google.com]
+[Google|http://google.com]
+
+GitHub Flavor
+-deleted-
+
+{noformat}
+preformatted piece of text
+so *no* further _formatting_ is done here
+{noformat}
 </textarea>
 
 </main>
