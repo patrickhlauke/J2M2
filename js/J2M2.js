@@ -124,7 +124,7 @@
 		var replacementsList = [];
 		var counter = 0;
 		
-		input = input.replace(/`{3,}(\w+)?((?:\n|.)+?)`{3,}/g, function(match, synt, content) {
+		input = input.replace(/`{3,}[ .]*(\w+)?((?:\n|.)+?)`{3,}/g, function(match, synt, content) {
 			var code = '{code';
 		
 			if (synt) {
