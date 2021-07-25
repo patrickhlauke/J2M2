@@ -1,6 +1,7 @@
 /**
  * Original script by Fokke Zandbergen / https://github.com/FokkeZB/J2M
  * Horribly hacked to add needed support for alternative text for images by Patrick H. Lauke / https://github.com/patrickhlauke
+ * Additional helper function to turn Jira images into links (to work around Jira's new broken behaviour with images/attachments)
  */
 
 
@@ -229,6 +230,21 @@
 		return input;
 	};
 
+	/**
+	 * Takes Jira formatted text and munges images/alternative texts into just visible text with filename (and text alternative)
+	 *
+	 * @param {string} input
+	 * @returns {string}
+	 */
+	function imgJ(input) {
+		// Images with alt= among their parameters
+		input = input.replace(/(!([^|\n\s]+)\|([^\n!]*)alt=([^\n!\,]+?)(,([^\n!]*))?!)/g, '*Image ({{$2}}):* $4');
+		// Images with just other parameters (ignore them)
+		input = input.replace(/(!([^|\n\s]+)\|([^\n!]*)!)/g, '*Image ({{$2}})*');
+		// Images without any parameters or alt
+		input = input.replace(/(!([^\n\s!]+)!)/g, '*Image ({{$2}})*');
+		return input;
+	};
 
 	/**
 	 * Exports object
@@ -236,7 +252,8 @@
 	 */
 	var J2M = {
 		toM: toM,
-		toJ: toJ
+		toJ: toJ,
+		imgJ: imgJ
 	};
 
 	// exporting that can be used in a browser and in node
