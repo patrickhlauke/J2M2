@@ -19,6 +19,7 @@
 
 <h2>Convert between GitHub-flavored Markdown and Jira text.</h2>
 <p>Expanded to support alternative text for images (since the original project seems to be unmaintained)</p>
+<p>Now includes extra image conversion option for (when going from Markdown to Jira only) which converts images and their text alternative into text-based references only, showing the filename and alternative text (to work around Jira's recent change in how it deals with images...or doesn't).</p>
 
 <h3>MarkDown</h3>
 <textarea class="editor" id="m"># Biggest heading
@@ -59,6 +60,8 @@ preformatted piece of text
 so *no* further _formatting_ is done here
 ```
 </textarea>
+
+<label><input type="checkbox" id="imgconv" value="1"> Convert images and their text alternatives into a text-based reference only.</label>
 
 <h3>JIRA</h3>
 <textarea class="editor" id="j">h1. Biggest heading
