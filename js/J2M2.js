@@ -231,12 +231,26 @@
 	};
 
 	/**
+	 * Takes Jira formatted text, keeps image references, but forces alternative text as visible caption
+	 *
+	 * @param {string} input
+	 * @returns {string}
+	 */
+	 function imgJcaption(input) {
+		// Images with alt= among their parameters
+		input = input.replace(/(!([^|\n\s]+)\|([^\n!]*)alt=([^\n!\,]+?)(,([^\n!]*))?!)/g, '!$2|alt=$4!  (*Caption:* $4)');
+		// Images without any parameters or alt
+		input = input.replace(/(!([^\n\s!]+)!)/g, '!$2!');
+		return input;
+	};
+	
+	/**
 	 * Takes Jira formatted text and munges images/alternative texts into just visible text with filename (and text alternative)
 	 *
 	 * @param {string} input
 	 * @returns {string}
 	 */
-	function imgJ(input) {
+	function imgJreplace(input) {
 		// Images with alt= among their parameters
 		input = input.replace(/(!([^|\n\s]+)\|([^\n!]*)alt=([^\n!\,]+?)(,([^\n!]*))?!)/g, '*Image ({{$2}}):* $4');
 		// Images with just other parameters (ignore them)
@@ -253,7 +267,8 @@
 	var J2M = {
 		toM: toM,
 		toJ: toJ,
-		imgJ: imgJ
+		imgJcaption: imgJcaption,
+		imgJreplace: imgJreplace
 	};
 
 	// exporting that can be used in a browser and in node

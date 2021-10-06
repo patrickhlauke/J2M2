@@ -4,7 +4,7 @@
 (function () {
 	var jiraInput = document.getElementById("j");
 	var markdownInput = document.getElementById("m");
-	var markdownImageHandling = document.getElementById("imgconv");
+	var imageOptionSelector = 'input[name="imgconvoption"]:checked';
 
 	var jiraCallback = function () {
 	  var markdown = J2M.toM(jiraInput.value);
@@ -12,9 +12,12 @@
 	};
 
 	var markdownCallback = function () {
+		markdownImageHandling = document.querySelector(imageOptionSelector).value;
 	  var jira = J2M.toJ(markdownInput.value);
-	  if (markdownImageHandling.checked) {
-		  jira = J2M.imgJ(jira);
+		if (markdownImageHandling == 1) {
+		  jira = J2M.imgJcaption(jira);
+	  } else if (markdownImageHandling == 2) {
+		  jira = J2M.imgJreplace(jira);
 	  }
 	  jiraInput.value = jira;
 	};
@@ -24,5 +27,5 @@
 
 	markdownInput.addEventListener('keyup', markdownCallback);
 	markdownInput.addEventListener('blur', markdownCallback);
-	markdownImageHandling.addEventListener('change', markdownCallback);
+	document.getElementById('imgconv').addEventListener('change', markdownCallback);
 })();
