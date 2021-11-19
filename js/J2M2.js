@@ -71,7 +71,7 @@
 		// Images without any parameters or alt
 		input = input.replace(/!([^\n\s!]+)!/g, '![]($1)'); 
 
-		input = input.replace(/\[([^|]+)\|(.+?)\]/g, '[$1]($2)');
+		input = input.replace(/\[([^|]+)\|(.+?)(?:\|smart-link)?\]/g, '[$1]($2)');
 		input = input.replace(/\[(.+?)\]([^\\(]+)/g, '<$1>$2');
 
 		input = input.replace(/{noformat}/g, '```');
