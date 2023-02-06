@@ -28,4 +28,7 @@
 	markdownInput.addEventListener('keyup', markdownCallback);
 	markdownInput.addEventListener('blur', markdownCallback);
 	document.getElementById('imgconv').addEventListener('change', markdownCallback);
+
+	// run it first time on load
+	markdownCallback();
 })();
