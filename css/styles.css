@@ -1,4 +1,5 @@
 body {
+  font-family: Helvetica,Arial,sans-serif;
 padding-top: 20px;
 padding-bottom: 40px;
 }
@@ -6,6 +7,13 @@ padding-bottom: 40px;
 textarea {
 width: 80%;
 height: 10em;
+padding: 1em;
 }
 
 label { display: block; }
+
+fieldset { margin-top: 1em; }
+
+h1, h2, h3 { color: #E100A0; }
+
+textarea { border: 1px solid #FF1958; }
