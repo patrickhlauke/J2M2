@@ -17,10 +17,14 @@ textarea {
 
 label { display: block; }
 
-fieldset { margin-top: 1em; }
+fieldset { margin-top: 1em; border: 1px solid #F56F00; }
 
 h1, h2, h3, legend { color: #E100A0; font-weight: bold; }
 
 textarea { border: 1px solid #FF1958; }
 
 abbr { text-decoration: none; }
+
+a { color: #FF1958; }
+
+input { accent-color: #FF1958; }
