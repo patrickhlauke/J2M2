@@ -17,10 +17,12 @@
 	 */
 	function toM(input) {
 
+		// block quote
 		input = input.replace(/^bq\.(.*)$/gm, function (match, content) {
 			return '> ' + content + "\n";
 		});
 
+		// bold and italic
 		input = input.replace(/([*_])(.*)\1/g, function (match,wrapper,content) {
 			var to = (wrapper === '*') ? '**' : '*';
 			return to + content + to;
@@ -45,6 +47,9 @@
 		input = input.replace(/^h([0-6])\.(.*)$/gm, function (match,level,content) {
 			return Array(parseInt(level) + 1).join('#') + content;
 		});
+
+		// horizontal rule
+		input = input.replace(/(\s*)----([\n\r\s]*)/g, '$1---$2');
 
 		input = input.replace(/\{\{([^}]+)\}\}/g, '`$1`');
 		input = input.replace(/\?\?((?:.[^?]|[^?].)+)\?\?/g, '<cite>$1</cite>');
@@ -125,6 +130,10 @@
 		var replacementsList = [];
 		var counter = 0;
 		
+		// horizontal rule
+		input = input.replace(/(\s*)---([\n\r\s]*)/g, '$1----$2');
+
+		// code
 		input = input.replace(/`{3,}[ .]*(\w+)?((?:\n|.)+?)`{3,}/g, function(match, synt, content) {
 			var code = '{code';
 		
@@ -147,21 +156,18 @@
 
 		input = input.replace(/`([^`]+)`/g, '{{$1}}');
 
-		input = input.replace(/^(.*?)\n([=-])+$/gm, function (match,content,level) {
-			return 'h' + (level[0] === '=' ? 1 : 2) + '. ' + content;
-		});
-
 		input = input.replace(/^([#]+)(.*?)$/gm, function (match,level,content) {
 			return 'h' + level.length + '.' + content;
 		});
 
+		// bold and italic
 		input = input.replace(/([*_]+)(.*?)\1/g, function (match,wrapper,content) {
 			var to = (wrapper.length === 1) ? '_' : '*';
 			return to + content + to;
 		});
 
 		// multi-level bulleted list
-		input = input.replace(/^(\s*)- (.*)$/gm, function (match,level,content) {
+		input = input.replace(/^(\s*)[\-\*] (.*)$/gm, function (match,level,content) {
 			var len = 2;
 			if(level.length > 0) {
 				len = parseInt(level.length/4.0) + 2;
@@ -170,7 +176,7 @@
 		});
 
 		// multi-level numbered list
-		input = input.replace(/^(\s+)1. (.*)$/gm, function (match, level, content) {
+		input = input.replace(/^(\s*)[0-9]+\. (.*)$/gm, function (match, level, content) {
 			var len = 2;
 			if (level.length > 1) {
 				len = parseInt(level.length / 4) + 2;
