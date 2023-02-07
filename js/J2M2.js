@@ -127,6 +127,21 @@
 	};
 
 	/**
+	 * Takes Jira formatted text, keeps image references, adds thumbnail option
+	 *
+	 * @param {string} input
+	 * @returns {string}
+	 */
+	function imgJthumb(input) {
+		// Images with alt= among their parameters
+		input = input.replace(/(!([^|\n\s]+)(\|)?(([^\n!]*))?!)/g, '!$2|thumbnail,$4!');
+		// Images without any parameters or alt
+		input = input.replace(/(!([^\n\s!]+)!)/g, '!$2!');
+		return input;
+	};
+
+
+	/**
 	 * Takes Jira formatted text, keeps image references, but forces alternative text as visible caption
 	 *
 	 * @param {string} input
@@ -162,6 +177,7 @@
 	 */
 	var J2M = {
 		toJ: toJ,
+		imgJthumb: imgJthumb,
 		imgJcaption: imgJcaption,
 		imgJreplace: imgJreplace
 	};
