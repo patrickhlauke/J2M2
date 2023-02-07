@@ -9,11 +9,9 @@
 	var markdownCallback = function () {
 		markdownImageHandling = document.querySelector(imageOptionSelector).value;
 	  var jira = J2M.toJ(markdownInput.value);
-		console.log(markdownImageHandling)
 		switch (markdownImageHandling) {
 			case '1':
 			  jira = J2M.imgJthumb(jira);
-				console.log("thumb")
 				break;
 			case '2':
 			  jira = J2M.imgJcaption(jira);
