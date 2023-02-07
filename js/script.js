@@ -21,6 +21,9 @@
 	markdownInput.addEventListener('blur', markdownCallback);
 	document.getElementById('imgconv').addEventListener('change', markdownCallback);
 
+	markdownInput.addEventListener('focus', function() { this.select(); });
+	jiraInput.addEventListener('focus', function() { this.select(); navigator.clipboard.writeText(this.value); });
+
 	// run it first time on load
 	markdownCallback();
 })();
