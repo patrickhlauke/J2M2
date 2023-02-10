@@ -29,7 +29,7 @@
 	document.getElementById('imgconv').addEventListener('change', markdownCallback);
 
 	markdownInput.addEventListener('focus', function() { this.select(); });
-	jiraInput.addEventListener('focus', function() { this.select(); navigator.clipboard.writeText(this.value); });
+	jiraInput.addEventListener('focus', function() { this.select(); });
 
 	// run it first time on load
 	markdownCallback();
